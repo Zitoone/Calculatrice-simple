@@ -1,78 +1,77 @@
-let result = document.querySelector("input")
+let ecran = document.querySelector("#ecran")
+let nb1 = 0;
+let nb2 = 0;
+let op = null;
 
-// let nb1 = ""
-// let nb2 = ""
-
-const numbers = document.querySelectorAll('.numbers')
-// console.log(numbers)
-for(const number of numbers){
-    number.addEventListener('click', ()=>{
-        let nb = number.value
-        console.log(nb)
+const boutons = document.querySelectorAll('.boutons')
+boutons.forEach(bouton =>{
+    bouton.addEventListener('click', ()=>{
+        let valeur = bouton.value
+        tableauOperateurs = ["+", "-", "/", "*"]
+        if(valeur == tableauOperateurs[i]){
+            
+            tableauOperateurs.forEach(operateur =>{
+                op == operateur
+                ecran.value = valeur
+            })
+        }
+        if(op == null && nb1 != 0){
+            nb1 += valeur 
+            ecran.value += valeur
+        }      
+        if(op != null && valeur != "=") {
+            nb2 += valeur
+            ecran.value += valeur
+        }
+        if(valeur == "=" && nb2 != 0){
+            calcul(op, nb1, nb2)
+            ecran.value = valeur
+        }   
     })
+})
+
+
+function calcul(op, nb1, nb2){
+    // let result;
+        if(op == "+"){
+            return valeur = nb1 + nb2
+        } else if (op == "-"){
+            return valeur = nb1 - nb2
+        } else if (op == "/"){
+            return valeur = nb1 / nb2
+        } else if (op == "*"){
+            return valeur = nb1 * nb2
+        } else {
+            return result = "Erreur"
+        }
 }
-const operators = document.querySelectorAll('.operators')
-for(const operator of operators){    
-    operator.addEventListener('click', () =>{
-        let op = operator.value
-        console.log(op)
-    })
-}
+
+const raz = document.querySelector(".clear");
+raz.addEventListener('click', ()=>{
+    ecran.value = ""
+})
 
 
 
-// numbers.forEach(number => {
-//     number.addEventListener('click',() => {
-//         number.value = nb1
+// const boutons = document.querySelectorAll('.boutons')
+// boutons.forEach(bouton =>{
+//     bouton.addEventListener('click', ()=>{
+//         let valeur = bouton.value
+//         if(valeur == "+" && nb1 != 0){
+//             op = "+"
+//             ecran.value += valeur
+//         }
+//         if(op == null){
+//             nb1 += valeur 
+//             ecran.value += valeur
+//         } 
+//         if(op != null && valeur != "+" && valeur != "=") {
+//             nb2 += valeur
+//             ecran.value += valeur
+//         }
+//         if(valeur == "=" && nb2 != 0){
+//             valeur = Number(nb1) + Number(nb2)
+//             ecran.value = valeur
+//         } 
 //     })
-//     console.log(nb1)
-    
-// });
-
-
-
-
-// let result = 0;
-// let operator = document.querySelector("#opérateur");
-
-
-// let info =document.querySelector("h1");
-
-
-// function calcul(){
-//     let nb1 = Number(document.querySelector("#nb1").value);
-//     let nb2 = Number(document.querySelector("#nb2").value);      
-//     switch(operator.value){
-
-
-//         case "+":
-//             result=nb1+nb2;
-//             info.append(`${nb1} + ${nb2} = ${result} `);
-//             break;
-//         case "-":
-//             result=nb1-nb2;
-//             info.append(`${nb1} - ${nb2} = ${result} `);
-//             break;
-//         case "x":
-//             result=nb1*nb2;
-//             info.append(`${nb1} X ${nb2} = ${result} `);
-//             break;
-//         case "/":
-//             result=nb1/nb2;
-//             info.append(`${nb1} / ${nb2} = ${result} `);
-//             break;
-//         default:
-//             info.innerText="Entrée invalide";
-//     }      
-// };
-
-
-// let send = document.querySelector("#send");
-// send.addEventListener("click", (e) =>{
-//     e.preventDefault();
-//     calcul();
-//     nb1.value='';
-//     nb2.value=''
-// });
-
-
+// })
